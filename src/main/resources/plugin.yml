@@ -1,0 +1,27 @@
+name: MiraAuctionHouse
+version: 0.1.0
+main: com.mira.auctionhouse.MiraAuctionHousePlugin
+api-version: '1.21'
+authors: [FiveS]
+description: Fixed-price player auction house for the Mira plugin ecosystem.
+depend: [Vault]
+
+commands:
+  auctionhouse:
+    description: Open and manage the Mira Auction House.
+    aliases: [ah, auction]
+    usage: /ah [sell|my|claim|history|search|admin|reload]
+
+permissions:
+  miraauctionhouse.use:
+    default: true
+  miraauctionhouse.sell:
+    default: true
+  miraauctionhouse.buy:
+    default: true
+  miraauctionhouse.search:
+    default: true
+  miraauctionhouse.admin:
+    default: op
+  miraauctionhouse.noexpiry:
+    default: op
