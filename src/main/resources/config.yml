@@ -1,0 +1,26 @@
+listing-duration-hours: 48
+expiry-check-seconds: 60
+history-limit: 1000
+
+listing-limits:
+  miraauctionhouse.limit.5: 5
+  miraauctionhouse.limit.10: 10
+  miraauctionhouse.limit.25: 25
+  miraauctionhouse.limit.50: 50
+  miraauctionhouse.limit.unlimited: 2147483647
+
+blacklist:
+  materials:
+    - BEDROCK
+    - COMMAND_BLOCK
+    - CHAIN_COMMAND_BLOCK
+    - REPEATING_COMMAND_BLOCK
+    - STRUCTURE_BLOCK
+    - JIGSAW
+  display-name-contains: []
+  pdc-keys:
+    - miraredeem:redeem_id
+    - mirafly:fly_voucher
+
+messages:
+  prefix: "&5[AH] &r"
