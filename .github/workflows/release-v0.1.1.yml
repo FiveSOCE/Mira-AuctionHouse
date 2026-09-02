@@ -1,0 +1,35 @@
+name: Release v0.1.1
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/release-v0.1.1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.10'
+      - name: Build
+        run: gradle clean build --stacktrace
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create v0.1.1 \
+            build/libs/MiraAuctionHouse-0.1.1.jar \
+            --target "${GITHUB_SHA}" \
+            --title "MiraAuctionHouse v0.1.1" \
+            --notes "Replaces internal listing IDs in cancellation messages with the actual item name, including renamed/custom display names."
