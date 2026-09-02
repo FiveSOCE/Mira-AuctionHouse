@@ -5,6 +5,8 @@ import com.mira.auctionhouse.gui.AuctionGuiService;
 import com.mira.auctionhouse.gui.AuctionHolder;
 import com.mira.auctionhouse.model.AuctionListing;
 import com.mira.auctionhouse.service.AuctionService;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -13,8 +15,14 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.Locale;
 
 public final class AuctionListener implements Listener {
+    private static final LegacyComponentSerializer LEGACY = LegacyComponentSerializer.legacyAmpersand();
+
     private final MiraAuctionHousePlugin plugin;
     private final AuctionService service;
     private final AuctionGuiService gui;
@@ -73,7 +81,7 @@ public final class AuctionListener implements Listener {
         if (slot < 45) {
             AuctionListing listing = gui.listingAt(player, slot, true);
             if (listing != null && service.cancel(player, listing.id(), false)) {
-                plugin.msg(player, "&aCancelled listing &f" + listing.id() + "&a. The item is now in /ah claim.");
+                plugin.msg(player, "&aCancelled listing &f" + itemName(listing.item()) + "&a. The item is now in /ah claim.");
                 gui.openMy(player, holder.page());
             }
             return;
@@ -99,6 +107,22 @@ public final class AuctionListener implements Listener {
             case NO_PERMISSION -> plugin.msg(player, "&cYou do not have permission to buy Auction House items.");
         }
         gui.openBrowse(player, 0);
+    }
+
+    private static String itemName(ItemStack item) {
+        ItemMeta meta = item.getItemMeta();
+        if (meta != null) {
+            Component displayName = meta.displayName();
+            if (displayName != null) return LEGACY.serialize(displayName);
+        }
+
+        StringBuilder out = new StringBuilder();
+        for (String part : item.getType().name().toLowerCase(Locale.ROOT).split("_")) {
+            if (part.isBlank()) continue;
+            if (!out.isEmpty()) out.append(' ');
+            out.append(Character.toUpperCase(part.charAt(0))).append(part.substring(1));
+        }
+        return out.toString();
     }
 
     @EventHandler
