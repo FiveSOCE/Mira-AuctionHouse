@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "com.mira"
-version = "0.1.1"
+version = "0.1.2"
 
 repositories {
     mavenCentral()
@@ -18,15 +18,11 @@ dependencies {
     }
 }
 
-java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(21))
-}
+java { toolchain.languageVersion.set(JavaLanguageVersion.of(21)) }
 
 tasks.withType<JavaCompile>().configureEach {
     options.encoding = "UTF-8"
     options.release.set(21)
 }
 
-tasks.jar {
-    archiveFileName.set("MiraAuctionHouse-${project.version}.jar")
-}
+tasks.jar { archiveFileName.set("MiraAuctionHouse-${project.version}.jar") }
