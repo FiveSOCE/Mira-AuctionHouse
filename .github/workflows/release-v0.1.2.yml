@@ -1,0 +1,40 @@
+name: Release v0.1.2
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/release-v0.1.2.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout tested source
+        uses: actions/checkout@v4
+        with:
+          ref: 07e8df089f1b42bfb59ee2b045e32a1f90464174
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.10'
+      - name: Build
+        run: gradle clean build --stacktrace
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create v0.1.2 \
+            build/libs/MiraAuctionHouse-0.1.2.jar \
+            --target 07e8df089f1b42bfb59ee2b045e32a1f90464174 \
+            --title "MiraAuctionHouse v0.1.2" \
+            --notes "Auction market intelligence update. Adds completed-sale price history, average sale-price lookup and persistent expired-listing history while retaining the existing fixed-price marketplace and claim flow."
