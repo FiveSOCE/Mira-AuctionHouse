@@ -23,4 +23,4 @@ blacklist:
     - mirafly:fly_voucher
 
 messages:
-  prefix: "&5[AH] &r"
+  prefix: "&5&lMira &8>> &r"
