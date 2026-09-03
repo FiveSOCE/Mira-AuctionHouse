@@ -26,7 +26,7 @@ public final class AuctionAnalyticsService {
             if (!material.name().equalsIgnoreCase(String.valueOf(raw.get("material")))) continue;
             double price = asDouble(raw.get("price"));
             long time = asLong(raw.get("time"));
-            String listing = String.valueOf(raw.getOrDefault("listing", ""));
+            String listing = String.valueOf(raw.containsKey("listing") ? raw.get("listing") : "");
             out.add(new Sale(material, price, Instant.ofEpochMilli(time), listing));
         }
         out.sort(Comparator.comparing(Sale::time).reversed());
@@ -49,7 +49,8 @@ public final class AuctionAnalyticsService {
             Material material;
             try { material = Material.valueOf(String.valueOf(raw.get("material"))); }
             catch (Exception ignored) { continue; }
-            out.add(new Expired(material, asDouble(raw.get("price")), Instant.ofEpochMilli(asLong(raw.get("time"))), String.valueOf(raw.getOrDefault("listing", ""))));
+            String listing = String.valueOf(raw.containsKey("listing") ? raw.get("listing") : "");
+            out.add(new Expired(material, asDouble(raw.get("price")), Instant.ofEpochMilli(asLong(raw.get("time"))), listing));
         }
         out.sort(Comparator.comparing(Expired::time).reversed());
         if (out.size() > Math.max(1, limit)) return List.copyOf(out.subList(0, Math.max(1, limit)));
