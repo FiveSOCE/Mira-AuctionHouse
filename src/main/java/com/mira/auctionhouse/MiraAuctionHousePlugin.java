@@ -15,6 +15,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class MiraAuctionHousePlugin extends JavaPlugin {
     private static final LegacyComponentSerializer LEGACY = LegacyComponentSerializer.legacyAmpersand();
+    private static final String CHAT_PREFIX = "&5&lMira &8>> &r";
 
     private Economy economy;
     private AuctionService auctions;
@@ -48,8 +49,7 @@ public final class MiraAuctionHousePlugin extends JavaPlugin {
     public void reloadAll() { reloadConfig(); auctions.reload(); }
 
     public void msg(CommandSender sender, String message) {
-        String prefix = getConfig().getString("messages.prefix", "&5[AH] &r");
-        sender.sendMessage(LEGACY.deserialize(prefix + message));
+        sender.sendMessage(LEGACY.deserialize(CHAT_PREFIX + message));
     }
 
     private boolean setupEconomy() {
