@@ -4,7 +4,7 @@ MiraAuctionHouse is the fixed-price player marketplace for the Mira Paper server
 
 ## Download
 
-[**Download MiraAuctionHouse v0.1.2**](https://github.com/FiveSOCE/Mira-AuctionHouse/releases/download/v0.1.2/MiraAuctionHouse-0.1.2.jar)
+[**Download MiraAuctionHouse v0.1.3**](https://github.com/FiveSOCE/Mira-AuctionHouse/releases/download/v0.1.3/MiraAuctionHouse-0.1.3.jar)
 
 ## Requirements / Dependencies
 
@@ -12,6 +12,7 @@ MiraAuctionHouse is the fixed-price player marketplace for the Mira Paper server
 - Java 21
 - Vault
 - A Vault-compatible economy provider
+- PlaceholderAPI optional for global market-stat placeholders
 
 ## How MiraAuctionHouse Works
 
@@ -19,7 +20,7 @@ A seller holds an item and creates a fixed-price listing with `/ah sell <price>`
 
 Buyers browse the Auction House GUI, use automatic categories or search, and confirm purchases through the purchase-confirmation interface. Vault handles buyer withdrawals and seller payouts. Blacklists can block listings by material, display name or persistent data, with MiraRedeem and MiraFly voucher items blocked by default. Listing limits are permission/configuration-aware and `miraauctionhouse.noexpiry` exempts authorized users from normal expiry behaviour.
 
-MiraAuctionHouse keeps transaction history and persistent expired-listing history. Market intelligence uses completed `SOLD` transactions to calculate actual historical sale prices rather than asking prices.
+MiraAuctionHouse keeps transaction history and persistent expired-listing history. Market intelligence uses completed `SOLD` transactions to calculate actual historical sale prices rather than asking prices. v0.1.3 also records sold quantity for new transactions and provides 24h, 7d and 30d market windows with average listing price, average/median per-unit price, low/high range, sold volume and trend versus the preceding equal-length window.
 
 ## Commands
 
@@ -30,7 +31,8 @@ MiraAuctionHouse keeps transaction history and persistent expired-listing histor
 | `/ah my` | `miraauctionhouse.use` | Opens the player's own active listings. |
 | `/ah claim` | `miraauctionhouse.use` | Claims expired/cancelled/overflow items from protected claim storage. |
 | `/ah history` | `miraauctionhouse.use` | Opens the player's transaction/listing history. |
-| `/ah pricehistory <material>` | `miraauctionhouse.use` | Shows completed-sale price history/average data for a material. |
+| `/ah pricehistory <material>` | `miraauctionhouse.use` | Shows recent completed sales with stack quantity and per-unit pricing. |
+| `/ah market <material> [24h|7d|30d]` | `miraauctionhouse.use` | Shows windowed market sales, unit volume, average, median, low/high and trend data. |
 | `/ah expired` | `miraauctionhouse.use` | Shows persistent expired-listing history. |
 | `/ah search [text]` | `miraauctionhouse.search` | Searches Auction House listings; without text, starts the GUI/chat search flow. |
 | `/ah reload` | `miraauctionhouse.admin` | Reloads Auction House configuration/data. |
@@ -50,3 +52,14 @@ Purchasing through the GUI requires `miraauctionhouse.buy`.
 | `miraauctionhouse.search` | Everyone | Allows Auction House searching. |
 | `miraauctionhouse.admin` | OP | Allows reloads and administrative listing removal. |
 | `miraauctionhouse.noexpiry` | OP | Exempts authorized listings/users from normal listing expiry behaviour. |
+
+
+## PlaceholderAPI
+
+Global market placeholders do not require player context. Format:
+
+`%miraauctionhouse_<material>_<24h|7d|30d>_<metric>%`
+
+Metrics: `avg`, `median`, `low`, `high`, `trend`, `volume`, `sales`.
+
+Example: `%miraauctionhouse_diamond_7d_median%`.
