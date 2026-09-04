@@ -20,6 +20,7 @@ public final class MiraAuctionHousePlugin extends JavaPlugin {
     private Economy economy;
     private AuctionService auctions;
     private AuctionGuiService gui;
+    private AuctionAnalyticsService analytics;
 
     @Override
     public void onEnable() {
@@ -32,7 +33,7 @@ public final class MiraAuctionHousePlugin extends JavaPlugin {
 
         auctions = new AuctionService(this, economy);
         gui = new AuctionGuiService(this, auctions);
-        AuctionAnalyticsService analytics = new AuctionAnalyticsService(this);
+        analytics = new AuctionAnalyticsService(this);
         AuctionCommand command = new AuctionCommand(this, auctions, gui);
         PluginCommand pluginCommand = getCommand("auctionhouse");
         if (pluginCommand == null) throw new IllegalStateException("auctionhouse command missing from plugin.yml");
@@ -40,10 +41,11 @@ public final class MiraAuctionHousePlugin extends JavaPlugin {
         pluginCommand.setTabCompleter(command);
         getServer().getPluginManager().registerEvents(new AuctionListener(this, auctions, gui), this);
         getServer().getPluginManager().registerEvents(new AuctionAnalyticsCommandListener(this, analytics), this);
+        if (getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) new AuctionPlaceholderExpansion(analytics).register();
 
         long period = Math.max(20L, getConfig().getLong("expiry-check-seconds", 60L) * 20L);
         getServer().getScheduler().runTaskTimer(this, auctions::expireNow, period, period);
-        getLogger().info("MiraAuctionHouse v" + getPluginMeta().getVersion() + " enabled with market price analytics.");
+        getLogger().info("MiraAuctionHouse v" + getPluginMeta().getVersion() + " enabled with windowed market price analytics and placeholders.");
     }
 
     public void reloadAll() { reloadConfig(); auctions.reload(); }
