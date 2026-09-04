@@ -257,6 +257,7 @@ public final class AuctionService {
         row.put("price", price);
         row.put("time", System.currentTimeMillis());
         row.put("material", item.getType().name());
+        row.put("amount", Math.max(1, item.getAmount()));
         history.add(row);
         int max = Math.max(100, plugin.getConfig().getInt("history-limit", 1000));
         while (history.size() > max) history.remove(0);
