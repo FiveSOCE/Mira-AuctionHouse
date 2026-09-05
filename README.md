@@ -4,7 +4,9 @@ MiraAuctionHouse is the fixed-price player marketplace for the Mira Paper server
 
 ## Download
 
-[**Download MiraAuctionHouse v0.1.3**](https://github.com/FiveSOCE/Mira-AuctionHouse/releases/download/v0.1.3/MiraAuctionHouse-0.1.3.jar)
+[**Download MiraAuctionHouse v0.1.4**](https://github.com/FiveSOCE/Mira-AuctionHouse/releases/download/v0.1.4/MiraAuctionHouse-0.1.4.jar)
+
+[View All Releases](https://github.com/FiveSOCE/Mira-AuctionHouse/releases)
 
 ## Requirements / Dependencies
 
@@ -13,6 +15,7 @@ MiraAuctionHouse is the fixed-price player marketplace for the Mira Paper server
 - Vault
 - A Vault-compatible economy provider
 - PlaceholderAPI optional for global market-stat placeholders
+- MiraCosmetics optional for centralized audio effects
 
 ## How MiraAuctionHouse Works
 
@@ -63,3 +66,7 @@ Global market placeholders do not require player context. Format:
 Metrics: `avg`, `median`, `low`, `high`, `trend`, `volume`, `sales`.
 
 Example: `%miraauctionhouse_diamond_7d_median%`.
+
+## MiraCosmetics Audio Integration (0.1.4)
+
+MiraCosmetics audio hooks cover listing creation, buyer purchase confirmation and online seller sold notifications.
