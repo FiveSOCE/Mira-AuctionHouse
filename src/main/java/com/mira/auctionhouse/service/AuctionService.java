@@ -126,9 +126,9 @@ public final class AuctionService {
         save();
         Player onlineSeller = Bukkit.getPlayer(listing.sellerId());
         if (onlineSeller != null) {
-            CosmeticsBridge.play(onlineSeller, "auction_sold");
             plugin.msg(onlineSeller, "&aYour listing sold for &f$" + money.format(listing.price()) + "&a.");
         }
+        // The buyer initiated this transaction, so transaction audio belongs to the buyer only.
         CosmeticsBridge.play(buyer, "auction_purchase");
         return PurchaseResult.SUCCESS;
     }
