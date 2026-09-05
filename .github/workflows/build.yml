@@ -30,18 +30,18 @@ jobs:
       - name: Upload plugin jar
         uses: actions/upload-artifact@v4
         with:
-          name: MiraAuctionHouse-0.1.3
-          path: build/libs/MiraAuctionHouse-0.1.3.jar
+          name: MiraAuctionHouse-0.1.4
+          path: build/libs/MiraAuctionHouse-0.1.4.jar
 
-      - name: Publish v0.1.3 release if missing
+      - name: Publish v0.1.4 release if missing
         if: github.event_name != 'pull_request'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if ! gh release view v0.1.3 >/dev/null 2>&1; then
-            gh release create v0.1.3 \
-              build/libs/MiraAuctionHouse-0.1.3.jar \
+          if ! gh release view v0.1.4 >/dev/null 2>&1; then
+            gh release create v0.1.4 \
+              build/libs/MiraAuctionHouse-0.1.4.jar \
               --target "${{ github.sha }}" \
-              --title "MiraAuctionHouse v0.1.3" \
-              --notes "Adds quantity-aware completed-sale analytics, 24h/7d/30d market statistics, median/range/volume/trend data, global PlaceholderAPI market metrics and fixes runtime version metadata."
+              --title "MiraAuctionHouse v0.1.4" \
+              --notes "Adds optional MiraCosmetics audio for listing creation, successful purchases and seller sold notifications."
           fi
