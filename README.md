@@ -4,7 +4,7 @@ MiraAuctionHouse is the fixed-price player marketplace for the Mira Paper server
 
 ## Download
 
-[**Download MiraAuctionHouse v0.1.4**](https://github.com/FiveSOCE/Mira-AuctionHouse/releases/download/v0.1.4/MiraAuctionHouse-0.1.4.jar)
+[**Download MiraAuctionHouse v0.1.5**](https://github.com/FiveSOCE/Mira-AuctionHouse/releases/download/v0.1.5/MiraAuctionHouse-0.1.5.jar)
 
 [View All Releases](https://github.com/FiveSOCE/Mira-AuctionHouse/releases)
 
@@ -67,6 +67,11 @@ Metrics: `avg`, `median`, `low`, `high`, `trend`, `volume`, `sales`.
 
 Example: `%miraauctionhouse_diamond_7d_median%`.
 
-## MiraCosmetics Audio Integration (0.1.4)
+## MiraCosmetics Audio Integration (0.1.5)
 
-MiraCosmetics audio hooks cover listing creation, buyer purchase confirmation and online seller sold notifications.
+MiraCosmetics audio follows the actioning-player rule: listing creation plays only to the seller who created it, and purchase confirmation plays only to the buyer who initiated the purchase. The non-actioning seller still receives the normal sold chat notification and payout, but no automatic sold sound.
+
+
+## Actioning-Player Audio Hotfix (0.1.5)
+
+Auction House transaction sounds are now strictly scoped to the player who initiated the call. Seller sale-notification chat remains intact, but the buyer's purchase no longer triggers audio for the seller.
