@@ -2,6 +2,7 @@ package com.mira.auctionhouse.service;
 
 import com.mira.auctionhouse.MiraAuctionHousePlugin;
 import com.mira.auctionhouse.model.AuctionListing;
+import com.mira.auctionhouse.util.CosmeticsBridge;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -96,6 +97,7 @@ public final class AuctionService {
         listings.put(id, new AuctionListing(id, seller.getUniqueId(), seller.getName(), price, now, expires, listed));
         addHistory("LISTED", id, seller.getUniqueId(), null, price, listed);
         save();
+        CosmeticsBridge.play(seller, "auction_listing");
         return true;
     }
 
@@ -123,7 +125,11 @@ public final class AuctionService {
         addHistory("SOLD", id, listing.sellerId(), buyer.getUniqueId(), listing.price(), item);
         save();
         Player onlineSeller = Bukkit.getPlayer(listing.sellerId());
-        if (onlineSeller != null) plugin.msg(onlineSeller, "&aYour listing sold for &f$" + money.format(listing.price()) + "&a.");
+        if (onlineSeller != null) {
+            CosmeticsBridge.play(onlineSeller, "auction_sold");
+            plugin.msg(onlineSeller, "&aYour listing sold for &f$" + money.format(listing.price()) + "&a.");
+        }
+        CosmeticsBridge.play(buyer, "auction_purchase");
         return PurchaseResult.SUCCESS;
     }
 
