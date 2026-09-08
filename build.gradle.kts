@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "com.mira"
-version = "0.1.5"
+version = "0.1.6"
 
 repositories {
     mavenCentral()
@@ -12,19 +12,23 @@ repositories {
     maven("https://repo.extendedclip.com/content/repositories/placeholderapi/")
 }
 
+val paperApiVersion = providers.gradleProperty("paperApiVersion").orElse("1.21.11-R0.1-SNAPSHOT")
+val compileJavaVersion = providers.gradleProperty("compileJavaVersion").map(String::toInt).orElse(21)
+val bytecodeJavaVersion = providers.gradleProperty("bytecodeJavaVersion").map(String::toInt).orElse(21)
+
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:1.21.11-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:${paperApiVersion.get()}")
     compileOnly("me.clip:placeholderapi:2.11.6")
     compileOnly("com.github.MilkBowl:VaultAPI:1.7") {
         exclude(group = "org.bukkit", module = "bukkit")
     }
 }
 
-java { toolchain.languageVersion.set(JavaLanguageVersion.of(21)) }
+java { toolchain.languageVersion.set(JavaLanguageVersion.of(compileJavaVersion.get())) }
 
 tasks.withType<JavaCompile>().configureEach {
     options.encoding = "UTF-8"
-    options.release.set(21)
+    options.release.set(bytecodeJavaVersion.get())
 }
 
 tasks.jar { archiveFileName.set("MiraAuctionHouse-${project.version}.jar") }
