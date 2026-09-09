@@ -4,7 +4,7 @@ MiraAuctionHouse is the fixed-price player marketplace for the Mira Paper server
 
 ## Download
 
-[**Download MiraAuctionHouse v0.1.5**](https://github.com/FiveSOCE/Mira-AuctionHouse/releases/download/v0.1.5/MiraAuctionHouse-0.1.5.jar)
+[**Download MiraAuctionHouse v0.1.5**](https://github.com/FiveSOCE/Mira-AuctionHouse/releases/download/v0.1.6/MiraAuctionHouse-0.1.6.jar)
 
 [View All Releases](https://github.com/FiveSOCE/Mira-AuctionHouse/releases)
 
