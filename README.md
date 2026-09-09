@@ -1,12 +1,14 @@
 # MiraAuctionHouse
 
-MiraAuctionHouse is the fixed-price player marketplace for the Mira Paper server suite. Players can list real ItemStacks for sale, browse/search listings, buy from other players and reclaim expired or cancelled items through protected claim storage.
-
 ## Download
 
-[**Download MiraAuctionHouse v0.1.5**](https://github.com/FiveSOCE/Mira-AuctionHouse/releases/download/v0.1.6/MiraAuctionHouse-0.1.6.jar)
+**Latest compatibility release: v0.1.6**
 
-[View All Releases](https://github.com/FiveSOCE/Mira-AuctionHouse/releases)
+[**Download MiraAuctionHouse-0.1.6.jar**](https://github.com/FiveSOCE/Mira-AuctionHouse/releases/download/v0.1.6/MiraAuctionHouse-0.1.6.jar)
+
+[View all releases](https://github.com/FiveSOCE/Mira-AuctionHouse/releases)
+
+MiraAuctionHouse is the fixed-price player marketplace for the Mira Paper server suite. Players can list real ItemStacks for sale, browse/search listings, buy from other players and reclaim expired or cancelled items through protected claim storage.
 
 ## Requirements / Dependencies
 
