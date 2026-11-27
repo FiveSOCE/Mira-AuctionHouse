@@ -125,7 +125,7 @@ public final class AuctionGuiService {
     public boolean isAwaitingSearch(UUID uuid) { return awaitingSearch.contains(uuid); }
 
     public void submitSearch(Player player, String input) {
-        if (!awaitingSearch.remove(player.getUniqueId())) return;
+        awaitingSearch.remove(player.getUniqueId());
         String value = input == null ? "" : input.trim();
         if (value.equalsIgnoreCase("clear")) value = "";
         search.put(player.getUniqueId(), value);
