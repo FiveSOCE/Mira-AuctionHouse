@@ -1,5 +1,8 @@
 # MiraAuctionHouse
 
+> **Compatibility work in progress (Paper 1.18.2 / Java 17).** This branch is a source-level migration baseline, not a tested release. The existing v0.1.6 download below targets Paper 1.21.11 and must not be treated as a 1.18.2 build. No 1.18.2 JAR has been published yet. Vault and an economy provider remain required.
+
+
 ## Download
 
 **Latest compatibility release: v0.1.6**
