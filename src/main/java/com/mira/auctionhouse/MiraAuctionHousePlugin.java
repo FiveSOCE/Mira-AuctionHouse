@@ -45,7 +45,7 @@ public final class MiraAuctionHousePlugin extends JavaPlugin {
 
         long period = Math.max(20L, getConfig().getLong("expiry-check-seconds", 60L) * 20L);
         getServer().getScheduler().runTaskTimer(this, auctions::expireNow, period, period);
-        getLogger().info("MiraAuctionHouse v" + getPluginMeta().getVersion() + " enabled with windowed market price analytics and placeholders.");
+        getLogger().info("MiraAuctionHouse v" + getDescription().getVersion() + " enabled with windowed market price analytics and placeholders.");
     }
 
     public void reloadAll() { reloadConfig(); auctions.reload(); }
