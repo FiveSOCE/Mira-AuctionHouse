@@ -31,4 +31,4 @@ tasks.withType<JavaCompile>().configureEach {
     options.release.set(bytecodeJavaVersion.get())
 }
 
-tasks.jar { archiveFileName.set("MiraAuctionHouse-${project.version}.jar") }
+tasks.jar { archiveFileName.set("MiraAuctionHouse_1.21.11-26.2.jar") }
