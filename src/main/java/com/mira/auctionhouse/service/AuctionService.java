@@ -236,6 +236,7 @@ public final class AuctionService {
     }
 
     public boolean isBlacklisted(ItemStack item) {
+        if (item == null || item.getType().isAir()) return true;
         List<String> materials = plugin.getConfig().getStringList("blacklist.materials");
         if (materials.stream().anyMatch(v -> v.equalsIgnoreCase(item.getType().name()))) return true;
         ItemMeta meta = item.getItemMeta();
