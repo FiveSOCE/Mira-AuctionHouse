@@ -1,19 +1,26 @@
 # MiraAuctionHouse
 
-## Download
+## Downloads by server version
 
-**Latest compatibility release: v0.1.6**
+| Target | Artifact | Release download |
+| --- | --- | --- |
+| Paper 1.18.2 (Java 17) | `MiraAuctionHouse_1.18.2.jar` | [Legacy release](https://github.com/FiveSOCE/Mira-AuctionHouse/releases/tag/v0.1.6-paper-1.18.2) |
+| Paper 1.21.11–26.2 (modern) | `MiraAuctionHouse_1.21.11-26.2.jar` | [Modern release](https://github.com/FiveSOCE/Mira-AuctionHouse/releases/tag/v0.1.6-paper-1.21.11-26.2) |
 
-[**Download MiraAuctionHouse-0.1.6.jar**](https://github.com/FiveSOCE/Mira-AuctionHouse/releases/download/v0.1.6/MiraAuctionHouse-0.1.6.jar)
+**Release status:** Downloads are only available after the corresponding branch's GitHub Actions compatibility checks and JAR build pass. The release links may not exist until those checks have completed. Do not install an older v0.1.6 JAR on Paper 1.18.2.
 
-[View all releases](https://github.com/FiveSOCE/Mira-AuctionHouse/releases)
+Current source branch: `compat/modern-1.21.11-26.2`. Build with `gradle clean test build` after installing the required Java toolchain.
+
+## Requirements and dependencies
+
+Vault and a Vault-compatible economy provider are **required**. PlaceholderAPI and MiraCosmetics are optional.
 
 MiraAuctionHouse is the fixed-price player marketplace for the Mira Paper server suite. Players can list real ItemStacks for sale, browse/search listings, buy from other players and reclaim expired or cancelled items through protected claim storage.
 
 ## Requirements / Dependencies
 
-- Paper 1.21.11
-- Java 21
+- Paper 1.21.11 through 26.2 (verify server APIs and required Java runtime before deployment)
+- Java 21 minimum for the packaged JAR
 - Vault
 - A Vault-compatible economy provider
 - PlaceholderAPI optional for global market-stat placeholders
