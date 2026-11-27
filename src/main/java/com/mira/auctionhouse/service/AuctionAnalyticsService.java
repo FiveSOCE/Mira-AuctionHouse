@@ -50,8 +50,8 @@ public final class AuctionAnalyticsService {
         double averageListing = current.stream().mapToDouble(Sale::price).average().orElse(0D);
         double averageUnit = unitPrices.stream().mapToDouble(Double::doubleValue).average().orElse(0D);
         double median = median(unitPrices);
-        double low = unitPrices.getFirst();
-        double high = unitPrices.getLast();
+        double low = unitPrices.get(0);
+        double high = unitPrices.get(unitPrices.size() - 1);
         int volume = current.stream().mapToInt(Sale::amount).sum();
 
         double previousAverage = previous.stream().mapToDouble(Sale::unitPrice).average().orElse(0D);
