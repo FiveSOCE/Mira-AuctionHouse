@@ -1,7 +1,7 @@
 name: MiraAuctionHouse
 version: 0.1.6
 main: com.mira.auctionhouse.MiraAuctionHousePlugin
-api-version: '1.21'
+api-version: '1.18'
 authors: [FiveS]
 description: Fixed-price player auction house for the Mira plugin ecosystem.
 depend: [Vault]
