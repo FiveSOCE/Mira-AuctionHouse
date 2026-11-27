@@ -1,5 +1,17 @@
 # MiraAuctionHouse
 
+## Compatibility editions (in development)
+
+The plugin now has separate compatibility source branches and CI workflows:
+
+| Server version | Source branch | Expected JAR name | Release |
+| --- | --- | --- | --- |
+| Paper 1.18.2 / Java 17 | [compat/1.18.2](https://github.com/FiveSOCE/Mira-AuctionHouse/tree/compat/1.18.2) | `MiraAuctionHouse_1.18.2.jar` | [Legacy releases](https://github.com/FiveSOCE/Mira-AuctionHouse/releases/tag/v0.1.6-paper-1.18.2) |
+| Paper 1.21.11 through 26.2 | [compat/modern-1.21.11-26.2](https://github.com/FiveSOCE/Mira-AuctionHouse/tree/compat/modern-1.21.11-26.2) | `MiraAuctionHouse_1.21.11-26.2.jar` | [Modern releases](https://github.com/FiveSOCE/Mira-AuctionHouse/releases/tag/v0.1.6-paper-1.21.11-26.2) |
+
+**Important:** Those release links are targets for automated publication after successful compatibility builds, not a guarantee that the builds have passed or assets are available yet. The existing v0.1.6 JAR below remains a modern-only release. Vault plus an economy provider are required.
+
+
 ## Download
 
 **Latest compatibility release: v0.1.6**
