@@ -1,22 +1,26 @@
 # MiraAuctionHouse
 
-> **Compatibility work in progress (Paper 1.18.2 / Java 17).** This branch is a source-level migration baseline, not a tested release. The existing v0.1.6 download below targets Paper 1.21.11 and must not be treated as a 1.18.2 build. No 1.18.2 JAR has been published yet. Vault and an economy provider remain required.
+## Downloads by server version
 
+| Target | Artifact | Release download |
+| --- | --- | --- |
+| Paper 1.18.2 (Java 17) | `MiraAuctionHouse_1.18.2.jar` | [Legacy release](https://github.com/FiveSOCE/Mira-AuctionHouse/releases/tag/v0.1.6-paper-1.18.2) |
+| Paper 1.21.11–26.2 (modern) | `MiraAuctionHouse_1.21.11-26.2.jar` | [Modern release](https://github.com/FiveSOCE/Mira-AuctionHouse/releases/tag/v0.1.6-paper-1.21.11-26.2) |
 
-## Download
+**Release status:** Downloads are only available after the corresponding branch's GitHub Actions compatibility checks and JAR build pass. The release links may not exist until those checks have completed. Do not install an older v0.1.6 JAR on Paper 1.18.2.
 
-**Latest compatibility release: v0.1.6**
+Current source branch: `compat/1.18.2`. Build with `gradle clean test build` after installing the required Java toolchain.
 
-[**Download MiraAuctionHouse-0.1.6.jar**](https://github.com/FiveSOCE/Mira-AuctionHouse/releases/download/v0.1.6/MiraAuctionHouse-0.1.6.jar)
+## Requirements and dependencies
 
-[View all releases](https://github.com/FiveSOCE/Mira-AuctionHouse/releases)
+Vault and a Vault-compatible economy provider are **required**. PlaceholderAPI and MiraCosmetics are optional.
 
 MiraAuctionHouse is the fixed-price player marketplace for the Mira Paper server suite. Players can list real ItemStacks for sale, browse/search listings, buy from other players and reclaim expired or cancelled items through protected claim storage.
 
 ## Requirements / Dependencies
 
-- Paper 1.21.11
-- Java 21
+- Paper 1.18.2
+- Java 17
 - Vault
 - A Vault-compatible economy provider
 - PlaceholderAPI optional for global market-stat placeholders
